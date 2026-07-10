@@ -21,14 +21,30 @@ jobs:
       with:
         channel: 'stable'
 
-    - name: Get dependencies
-      run: flutter pub get
-
-    - name: Build APK
-      run: flutter build apk --release --target-platform android-arm64
+    - name: Find and Build Flutter Project
+      run: |
+        # پیدا کردن فولدری که فایل pubspec.yaml در آن قرار دارد
+        PUBSPEC_PATH=$(find . -name "pubspec.yaml" -print -quit)
+        if [ -z "$PUBSPEC_PATH" ]; then
+          echo "Error: pubspec.yaml not found anywhere in the repository!"
+          exit 1
+        fi
+        
+        PROJECT_DIR=$(dirname "$PUBSPEC_PATH")
+        echo "Found Flutter project root at: $PROJECT_DIR"
+        cd "$PROJECT_DIR"
+        
+        # اجرای مراحل ساخت داخل پوشه اصلی پروژه
+        flutter pub get
+        flutter build apk --release --target-platform android-arm64
+        
+        # انتقال فایل نهایی به پوشه اصلی گیت‌هاب برای آپلود
+        cd -
+        mkdir -p build_output
+        cp "$PROJECT_DIR/build/app/outputs/flutter-apk/app-release.apk" ./build_output/gard-config.apk
 
     - name: Upload Release APK
       uses: actions/upload-artifact@v4
       with:
         name: Gard-Config-App
-        path: build/app/outputs/flutter-apk/app-release.apk
+        path: ./build_output/gard-config.apk
