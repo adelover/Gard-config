@@ -1,0 +1,41 @@
+{
+  "server": {
+    "listen_addr": "0.0.0.0",
+    "listen_port": 443,
+    "fallback_addr": "127.0.0.1",
+    "fallback_port": 80,
+    "pre_shared_key": "AetherNetSuperSecretPresharedKey2026",
+    "server_private_key": "30b05b3ff75df2f026027fb456958448bca612e6bf5f7a1f2f01f2f35478bd9f"
+  },
+  "client": {
+    "server_addr": "198.51.100.42",
+    "server_port": 443,
+    "server_public_key": "8520f0098930a754748b7ddcb43ef75a0db5390c53d10ef1d23a492cf574217a",
+    "pre_shared_key": "AetherNetSuperSecretPresharedKey2026",
+    "socks5_listen_addr": "127.0.0.1",
+    "socks5_listen_port": 10808,
+    "obfuscation_mode": "video_streaming"
+  },
+  "admin_api": {
+    "enabled": true,
+    "listen_port": 8080,
+    "auth_token": "aether-admin-token-9876",
+    "enable_dashboard_server": true
+  },
+  "users": [
+    {
+      "id": "e0b57e62-4217-48f5-9ba4-f58cbf83b1a2",
+      "username": "user_alpha",
+      "pre_shared_key": "AetherNetSuperSecretPresharedKey2026",
+      "traffic_limit_bytes": 107374182400,
+      "traffic_used_bytes": 4831839201
+    },
+    {
+      "id": "8fa3bfd1-93e1-4c74-9588-34857bdfce72",
+      "username": "user_beta",
+      "pre_shared_key": "AetherNetSuperSecretPresharedKey2026",
+      "traffic_limit_bytes": 536870912000,
+      "traffic_used_bytes": 12849301284
+    }
+  ]
+}

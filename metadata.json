@@ -1,0 +1,6 @@
+{
+  "name": "Gard Config",
+  "description": "Ultra-modern proxy client designed to automate and abstract low-level proxy subscription configurations natively.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
